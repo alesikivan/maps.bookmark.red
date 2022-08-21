@@ -2,9 +2,9 @@
   "name": "bookmark-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "maps.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon maps.js"
   },
   "author": "alesikivan",
   "license": "ISC",
