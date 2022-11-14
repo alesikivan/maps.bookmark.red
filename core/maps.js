@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'build')));
 
 app.get('/get-data', (req, res) => {
-  res.sendFile(path.join(__dirname, './data/kepler.gl.json'));
+  res.sendFile(path.join(__dirname, './data/versions/2/kepler.gl.json'));
 })
 
 app.get('*', function (req, res) {
