@@ -12,6 +12,8 @@ app.use(express.static(path.join(__dirname, '..', 'build')));
 app.get('/get-data/:id', (req, res) => {
   const { id = 1 } = req.params
 
+  console.log(id, +id)
+
   switch (+id) {
     case 1:
       // Traffic Map
