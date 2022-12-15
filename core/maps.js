@@ -9,8 +9,21 @@ app.use(cors())
 
 app.use(express.static(path.join(__dirname, '..', 'build')));
 
-app.get('/get-data', (req, res) => {
-  res.sendFile(path.join(__dirname, './data/versions/2/kepler.gl.json'));
+app.get('/get-data/:id', (req, res) => {
+  const { id = 1 } = req.params
+
+  switch (+id) {
+    case 1:
+      // Traffic Map
+      return res.sendFile(path.join(__dirname, './data/versions/3/kepler.gl.json'));   
+
+    case 2:
+      // Cluster Map
+      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));   
+  
+    default:
+      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));   
+  }
 })
 
 app.get('*', function (req, res) {
