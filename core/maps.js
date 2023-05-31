@@ -7,24 +7,26 @@ const app = express()
 
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'build')))
 
 app.get('/get-data/:id', (req, res) => {
   const { id = 1 } = req.params
 
-  console.log(id, +id)
-
   switch (+id) {
     case 1:
       // Traffic Map
-      return res.sendFile(path.join(__dirname, './data/versions/3/kepler.gl.json'));   
+      return res.sendFile(path.join(__dirname, './data/versions/3/kepler.gl.json'))
 
     case 2:
       // Cluster Map
-      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));   
-  
+      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'))
+    
+    case 3:
+      // Czech highway weekly traffic Map
+      return res.sendFile(path.join(__dirname, './data/versions/3/czech-highway-weekly-traffic.json'))
+
     default:
-      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));   
+      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));
   }
 })
 
@@ -35,5 +37,5 @@ app.get('*', function (req, res) {
 const PORT = process.env.PORT || 3002
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+  console.log(`Server is running on port ${PORT}`)
 })
