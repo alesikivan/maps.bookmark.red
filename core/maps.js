@@ -12,21 +12,23 @@ app.use(express.static(path.join(__dirname, '..', 'build')))
 app.get('/get-data/:id', (req, res) => {
   const { id = 1 } = req.params
 
+  const folderPath = './data/versions/4/'
+
   switch (+id) {
     case 1:
       // Traffic Map
-      return res.sendFile(path.join(__dirname, './data/versions/3/kepler.gl.json'))
+      return res.sendFile(path.join(__dirname, folderPath + 'kepler.gl.json'))
 
     case 2:
       // Cluster Map
-      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'))
+      return res.sendFile(path.join(__dirname, folderPath + 'clusters_kepler.gl.json'))
     
     case 3:
       // Czech highway weekly traffic Map
-      return res.sendFile(path.join(__dirname, './data/versions/3/czech-highway-weekly-traffic.json'))
+      return res.sendFile(path.join(__dirname, folderPath + 'czech-highway-weekly-traffic.json'))
 
     default:
-      return res.sendFile(path.join(__dirname, './data/versions/3/clusters_kepler.gl.json'));
+      return res.sendFile(path.join(__dirname, folderPath + 'clusters_kepler.gl.json'));
   }
 })
 
